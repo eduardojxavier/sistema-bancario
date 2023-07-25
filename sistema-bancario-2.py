@@ -122,11 +122,11 @@ def criarNovaConta (contas,usuarios,AGENCIA, limite_conta, limite_saques):
 def main():
 
     AGENCIA = '0001'
-    usuarios = [{'cpf': 123, 'nome': 'fsadf', 'endereco': 'adfads', 'dataNascimento': 'asdfasd'}, {'cpf': 234, 'nome': 'fsadf', 'endereco': 'adfads', 'dataNascimento': 'asdfasd'}]
-    contas = [{'cpf': 123, 'agencia': '0001', 'numConta': 1, 'limite_conta': 500, 'limite_saques': 3, 'saldoConta': 0}, {'cpf': 234, 'agencia': '0001', 'numConta': 2, 'limite_conta': 500, 'limite_saques': 3, 'saldoConta': 0}]
+    usuarios = []
+    contas = []
     limite_conta = 500
     limite_saques = 3
-    extrato = [{'NumConta': 1, 'Transacao': 'Depósito', 'Valor': 1000}, {'NumConta': 2, 'Transacao': 'Depósito', 'Valor': 500}, {'NumConta': 1, 'Transacao': 'Depósito', 'Valor': 450}]
+    extrato = []
 
     while True:
         
