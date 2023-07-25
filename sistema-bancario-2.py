@@ -26,12 +26,15 @@ def deposito(contas, extrato):
             saldo=saldo+valor
             print("Valor depositado com sucesso.")
             print(f"Saldo atual: R$ {saldo:.2f}")
-            extrato.append({"NumConta": numConta, "Depósito":valor})
+            extrato.append({"NumConta": numConta, "Transacao":"Depósito", "Valor":valor})
             print(extrato)
             conta['saldoConta']=saldo
+
+            return conta['saldoConta']
+        
         else:
             print("Conta não existe.")
-    return conta['saldoConta']
+    
 
 def saque(contas,limite_conta,limite_saque,extrato):
     numConta=int(input("Digite o número da conta para saque: \n"))
@@ -55,7 +58,7 @@ def saque(contas,limite_conta,limite_saque,extrato):
                 print("Valor sacado com sucesso.")
                 print(f"Saldo atual: R$ {saldo:.2f}")
                 limiteSaque=limiteSaque-1
-                extrato.append({"NumConta": numConta, "Saque":valor})
+                extrato.append({"NumConta": numConta, "Transacao":"Saque", "Valor": valor})
                 conta['saldoConta']=saldo
                 conta['limite_saques']=limiteSaque
                 
@@ -65,16 +68,13 @@ def saque(contas,limite_conta,limite_saque,extrato):
 
 
 def imprimirExtrato(contas, extrato):
-    numConta = int(input("Digite o número da conta: \n")) 
-    print("==========================================")
-    print("================EXTRATO===================")
+    #numConta = int(input("Digite o número da conta: \n")) 
     
-    conta = testarConta(numConta, contas)
-    for conta in extrato:
-        if conta == numConta:
-            print(conta)
-        #else:
-            #print("Não há movimentações.")
+    for conta in extrato:        
+
+        print("==========================================")
+        print("================EXTRATO===================")
+        print(conta)
     
 def cadastroUsuario(usuarios):
     cpf = int(input("Digite o CPF (somente números): \n"))
@@ -126,7 +126,7 @@ def main():
     contas = [{'cpf': 123, 'agencia': '0001', 'numConta': 1, 'limite_conta': 500, 'limite_saques': 3, 'saldoConta': 0}, {'cpf': 234, 'agencia': '0001', 'numConta': 2, 'limite_conta': 500, 'limite_saques': 3, 'saldoConta': 0}]
     limite_conta = 500
     limite_saques = 3
-    extrato = [[{'NumConta': 2, 'Depósito': 1000}, {'NumConta': 1, 'Depósito': 500}]]
+    extrato = [{'NumConta': 1, 'Transacao': 'Depósito', 'Valor': 1000}, {'NumConta': 2, 'Transacao': 'Depósito', 'Valor': 500}, {'NumConta': 1, 'Transacao': 'Depósito', 'Valor': 450}]
 
     while True:
         
